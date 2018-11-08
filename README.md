@@ -39,6 +39,18 @@ $shasum -a 256 *
 
 $npm run deploy rinkeby
 
+## TODO
+
+Update Dependencies, look at FansUnite
+
+Update Truffle flattener
+Update open zeppelin files / think about ways to make it work without having to update for each version of zeppelin?
+
+Possible to get rid of es2015 thing for await?
+
+
+
+
 
 
 
