@@ -1,8 +1,6 @@
 pragma solidity ^0.4.24;
 
-
-import "../openZeppelinContracts/math/SafeMath.sol";
-
+import "../../node_modules/openZeppelin-solidity/contracts/math/SafeMath.sol";
 
 contract SafeMathMock {
 
@@ -20,5 +18,9 @@ contract SafeMathMock {
 
     function add(uint256 a, uint256 b) public pure returns (uint256) {
         return SafeMath.add(a, b);
+    }
+
+    function mod(uint256 a, uint256 b) public pure returns (uint256) {
+        return SafeMath.mod(a, b);
     }
 }

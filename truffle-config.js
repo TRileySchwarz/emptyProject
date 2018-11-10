@@ -1,16 +1,4 @@
 require('dotenv').config();
-require('babel-polyfill');
-require("babel-register")({
-    // Ignore can also be specified as a function.
-    ignore: function(filename) {
-        if (filename.indexOf("node_modules/openzeppelin-solidity") !== -1 || filename.indexOf("emptyproject/contracts") !== -1 || filename.indexOf("emptyproject/test") !== -1 ||
-            filename.indexOf("emptyproject/coverageEnv/test") !== -1) {
-            return false;
-        } else {
-            return true;
-        }
-    },
-});
 
 const HDWalletProvider = require('truffle-hdwallet-provider');
 
@@ -57,4 +45,10 @@ module.exports = {
             gas: 4612388000
         }
     },
+    solc: {
+        optimizer: {
+            enabled: true,
+            runs: 200
+        }
+    }
 };
