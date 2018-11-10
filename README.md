@@ -28,11 +28,9 @@ $npm run deploy rinkeby
 requires a .env file with mnemonic saved
 
 ## Truffle Flattener
+https://www.npmjs.com/package/truffle-flattener
 
 ## TODO
-
-Update Truffle flattener
-Update open zeppelin files / think about ways to make it work without having to update for each version of zeppelin?
 
 
 
