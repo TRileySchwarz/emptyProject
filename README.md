@@ -1,6 +1,6 @@
 # emptyproject
 
-This project was created to provide developers with a foundation for developing Solidity Smart Contracts. It has been filled with a series
+This project is intended to provide developers with a foundation for developing Solidity Smart Contracts. It has been filled with a series
 of scripts, commands, example contract structures, javascript test suites, and packages pre-installed to meet the demands of most projects. 
 This project utilizes the OpenZeppelin package as a means of demonstrating some of the most common contracts such as ERC20, SafeMath.sol etc.
 
