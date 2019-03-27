@@ -6,17 +6,20 @@ This project utilizes the OpenZeppelin package as a means of demonstrating some 
 
 For the best results, this project was intended to be run using the IntelliJ Ultimate IDE. https://www.jetbrains.com/idea/ 
 
+&nbsp;
 ## Debugging Smart Contracts in IntelliJ Ultimate IDE
  
 For more information on debugging your smart contracts inside of IntelliJ follow the instructions here
 
 https://github.com/TRileySchwarz/truffle-intellij-debug
 
+&nbsp;
 ## NPM
 From the project root. 
     
     $ npm install
 
+&nbsp;
 ## Running Tests
 *Ensure there is no ganache-cli currently running
 
@@ -28,13 +31,7 @@ Run tests with coverage:
 
     $ sh scripts/coverage.sh
 
-## Latex Test Formatting
-If you are interested in displaying your console log test output in Latex, this script will format it automatically.
-
-Replace the S variable in parse_test.py (in the scripts folder) with the terminal output of "$ truffle test"
-
-    $ python3 parse_test.py
-
+&nbsp;
 ## Solhint
 Solidity specific linter. This is helpful in running static analysis on your code to catch simple mistakes and maintain best practice/style guide adherence
 
@@ -42,6 +39,7 @@ Solidity specific linter. This is helpful in running static analysis on your cod
 
 https://protofire.github.io/solhint/
 
+&nbsp;
 ## Generating Flat Files
 Used for generating flat files. This is useful when needing to very contracts on etherscan, or deploying through something like Remix IDE.
 
@@ -49,15 +47,25 @@ Used for generating flat files. This is useful when needing to very contracts on
 
 https://www.npmjs.com/package/truffle-flattener
 
+&nbsp;
+## Latex Test Formatting
+If you are interested in displaying your console log test output in Latex, this script will format it automatically.
+
+Replace the S variable in parse_test.py (in the scripts folder) with the terminal output of "$ truffle test"
+
+    $ python3 parse_test.py
+    
+&nbsp;
 ## SHA256 hashing
 In the root of the files you want the hashes of. This allows users to verify the contents of a file.
     
     $ shasum -a 256 * 
 
+&nbsp;
+### Author
 
-## Author
+- T. Riley Schwarz
 
-T. Riley Schwarz
 
 
 
