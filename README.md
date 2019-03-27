@@ -4,7 +4,7 @@ This project is intended to provide developers with a foundation for developing 
 of scripts, commands, example contract structures, javascript test suites, and packages pre-installed to meet the demands of most projects. 
 It utilizes the OpenZeppelin package as a means of demonstrating some of the most common contracts such as ERC20, SafeMath.sol etc.
 
-For the best results, this project was intended to be run using the IntelliJ Ultimate IDE. https://www.jetbrains.com/idea/ 
+For the best results this project should be run using the IntelliJ Ultimate IDE. https://www.jetbrains.com/idea/ 
 
 &nbsp;
 ## Debugging Smart Contracts in IntelliJ Ultimate IDE
