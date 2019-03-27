@@ -1,9 +1,8 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.2;
 
-import "../../node_modules/openZeppelin-solidity/contracts/math/SafeMath.sol";
+import "../SafeMath.sol";
 
 contract SafeMathMock {
-
     function mul(uint256 a, uint256 b) public pure returns (uint256) {
         return SafeMath.mul(a, b);
     }

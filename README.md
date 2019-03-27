@@ -1,37 +1,63 @@
 # emptyproject
 
-This project is used as a base generic project for testing/auditing/developing Solidity Smart Contracts
+This project was created to provide developers with a foundation for developing Solidity Smart Contracts. It has been filled with a series
+of scripts, commands, example contract structures, javascript test suites, and packages pre-installed to meet the demands of most projects. 
+This project utilizes the OpenZeppelin package as a means of demonstrating some of the most common contracts such as ERC20, SafeMath.sol etc.
 
-### NPM
-$npm install
+For the best results, this project was intended to be run using the IntelliJ Ultimate IDE. https://www.jetbrains.com/idea/ 
 
-### Latex Test Formatting
+## Debugging Smart Contracts in IntelliJ Ultimate IDE
+ 
+For more information on debugging your smart contracts inside of IntelliJ follow the instructions here
+
+https://github.com/TRileySchwarz/truffle-intellij-debug
+
+## NPM
+From the project root. 
+    
+    $ npm install
+
+## Running Tests
+*Ensure there is no ganache-cli currently running
+
+Run truffle tests: 
+
+    $ sh scripts/test.sh
+
+Run tests with coverage: 
+
+    $ sh scripts/coverage.sh
+
+## Latex Test Formatting
+If you are interested in displaying your console log test output in Latex, this script will format it automatically.
 
 Replace the S variable in parse_test.py (in the scripts folder) with the terminal output of "$ truffle test"
 
-$python3 parse_test.py
+    $ python3 parse_test.py
 
-### Solium
-"$solium -d contracts"/ or "$solium -d ." or "$solium -f ERC20Mock.sol"
+## Solhint
+Solidity specific linter. This is helpful in running static analysis on your code to catch simple mistakes and maintain best practice/style guide adherence
 
-for custom configs
-http://solium.readthedocs.io/en/latest/user-guide.html 
+    $ npm run lint:sol
 
-### SHA256 hashing
-In the root of the files you want the hashes of
-$shasum -a 256 * 
+https://protofire.github.io/solhint/
 
-### Deploy to test network
+## Generating Flat Files
+Used for generating flat files. This is useful when needing to very contracts on etherscan, or deploying through something like Remix IDE.
 
-$npm run deploy rinkeby
+    $ npm run generateFlats
 
-requires a .env file with mnemonic saved
-
-## Truffle Flattener
 https://www.npmjs.com/package/truffle-flattener
 
-## TODO
+## SHA256 hashing
+In the root of the files you want the hashes of. This allows users to verify the contents of a file.
+    
+    $ shasum -a 256 * 
 
+
+## Author
+
+T. Riley Schwarz
 
 
 

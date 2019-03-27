@@ -1,13 +1,10 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.2;
 
-
-import "../../node_modules/openZeppelin-solidity/contracts/token/ERC20/ERC20.sol";
-
+import "../ERC20.sol";
 
 // mock class using ERC20
 contract ERC20Mock is ERC20 {
-
-    constructor(address initialAccount, uint256 initialBalance) public {
+    constructor (address initialAccount, uint256 initialBalance) public {
         _mint(initialAccount, initialBalance);
     }
 
@@ -23,4 +20,7 @@ contract ERC20Mock is ERC20 {
         _burnFrom(account, amount);
     }
 
+    function approveInternal(address owner, address spender, uint256 value) public {
+        _approve(owner, spender, value);
+    }
 }

@@ -1,7 +1,8 @@
-build
-node_modules
-coverage
 .env
 .idea
+.node-xmlhttprequest-*
+build
+coverage
 coverage.json
+node_modules
 
