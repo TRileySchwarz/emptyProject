@@ -23,29 +23,27 @@ From the project root.
 ## Running Tests
 *Ensure there is no ganache-cli currently running
 
-Run truffle tests: 
+Run truffle tests - port 8545 
 
     $ sh scripts/test.sh
 
-Run tests with coverage: 
+Run tests with coverage - port 8555 
 
     $ sh scripts/coverage.sh
 
 &nbsp;
-## Solhint
+## Solidity Linter - [solhint](https://protofire.github.io/solhint/)
 Solidity specific linter. This is helpful in running static analysis on your code to catch simple mistakes and maintain best practice/style guide adherence
 
     $ npm run lint:sol
 
-https://protofire.github.io/solhint/
 
 &nbsp;
-## Generating Flat Files
+## Generating Flat Files - [truffle-flattener](https://www.npmjs.com/package/truffle-flattener)
 Used for generating flat files. This is useful when needing to very contracts on etherscan, or deploying through something like Remix IDE.
 
     $ npm run generateFlats
 
-https://www.npmjs.com/package/truffle-flattener
 
 &nbsp;
 ## Latex Test Formatting
