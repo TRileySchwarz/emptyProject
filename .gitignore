@@ -1,5 +1,6 @@
 .env
 .DS_Store
+contracts/.DS_Store
 .idea
 .node-xmlhttprequest-*
 build
