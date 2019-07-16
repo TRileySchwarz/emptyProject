@@ -1,5 +1,7 @@
-const { BN, constants, shouldFail } = require('openzeppelin-test-helpers');
+const { BN, constants, expectRevert } = require('openzeppelin-test-helpers');
 const { MAX_UINT256 } = constants;
+
+const { expect } = require('chai');
 
 const SafeMathMock = artifacts.require('SafeMathMock');
 
@@ -9,13 +11,13 @@ contract('SafeMath', function () {
   });
 
   async function testCommutative (fn, lhs, rhs, expected) {
-    (await fn(lhs, rhs)).should.be.bignumber.equal(expected);
-    (await fn(rhs, lhs)).should.be.bignumber.equal(expected);
+    expect(await fn(lhs, rhs)).to.be.bignumber.equal(expected);
+    expect(await fn(rhs, lhs)).to.be.bignumber.equal(expected);
   }
 
-  async function testFailsCommutative (fn, lhs, rhs) {
-    await shouldFail.reverting(fn(lhs, rhs));
-    await shouldFail.reverting(fn(rhs, lhs));
+  async function testFailsCommutative (fn, lhs, rhs, reason) {
+    await expectRevert(fn(lhs, rhs), reason);
+    await expectRevert(fn(rhs, lhs), reason);
   }
 
   describe('add', function () {
@@ -30,7 +32,7 @@ contract('SafeMath', function () {
       const a = MAX_UINT256;
       const b = new BN('1');
 
-      await testFailsCommutative(this.safeMath.add, a, b);
+      await testFailsCommutative(this.safeMath.add, a, b, 'SafeMath: addition overflow');
     });
   });
 
@@ -39,14 +41,14 @@ contract('SafeMath', function () {
       const a = new BN('5678');
       const b = new BN('1234');
 
-      (await this.safeMath.sub(a, b)).should.be.bignumber.equal(a.sub(b));
+      expect(await this.safeMath.sub(a, b)).to.be.bignumber.equal(a.sub(b));
     });
 
     it('reverts if subtraction result would be negative', async function () {
       const a = new BN('1234');
       const b = new BN('5678');
 
-      await shouldFail.reverting(this.safeMath.sub(a, b));
+      await expectRevert(this.safeMath.sub(a, b), 'SafeMath: subtraction overflow');
     });
   });
 
@@ -69,7 +71,7 @@ contract('SafeMath', function () {
       const a = MAX_UINT256;
       const b = new BN('2');
 
-      await testFailsCommutative(this.safeMath.mul, a, b);
+      await testFailsCommutative(this.safeMath.mul, a, b, 'SafeMath: multiplication overflow');
     });
   });
 
@@ -78,28 +80,28 @@ contract('SafeMath', function () {
       const a = new BN('5678');
       const b = new BN('5678');
 
-      (await this.safeMath.div(a, b)).should.be.bignumber.equal(a.div(b));
+      expect(await this.safeMath.div(a, b)).to.be.bignumber.equal(a.div(b));
     });
 
     it('divides zero correctly', async function () {
       const a = new BN('0');
       const b = new BN('5678');
 
-      (await this.safeMath.div(a, b)).should.be.bignumber.equal('0');
+      expect(await this.safeMath.div(a, b)).to.be.bignumber.equal('0');
     });
 
     it('returns complete number result on non-even division', async function () {
       const a = new BN('7000');
       const b = new BN('5678');
 
-      (await this.safeMath.div(a, b)).should.be.bignumber.equal('1');
+      expect(await this.safeMath.div(a, b)).to.be.bignumber.equal('1');
     });
 
-    it('reverts on divison by zero', async function () {
+    it('reverts on division by zero', async function () {
       const a = new BN('5678');
       const b = new BN('0');
 
-      await shouldFail.reverting(this.safeMath.div(a, b));
+      await expectRevert(this.safeMath.div(a, b), 'SafeMath: division by zero');
     });
   });
 
@@ -109,28 +111,28 @@ contract('SafeMath', function () {
         const a = new BN('284');
         const b = new BN('5678');
 
-        (await this.safeMath.mod(a, b)).should.be.bignumber.equal(a.mod(b));
+        expect(await this.safeMath.mod(a, b)).to.be.bignumber.equal(a.mod(b));
       });
 
       it('when the dividend is equal to the divisor', async function () {
         const a = new BN('5678');
         const b = new BN('5678');
 
-        (await this.safeMath.mod(a, b)).should.be.bignumber.equal(a.mod(b));
+        expect(await this.safeMath.mod(a, b)).to.be.bignumber.equal(a.mod(b));
       });
 
       it('when the dividend is larger than the divisor', async function () {
         const a = new BN('7000');
         const b = new BN('5678');
 
-        (await this.safeMath.mod(a, b)).should.be.bignumber.equal(a.mod(b));
+        expect(await this.safeMath.mod(a, b)).to.be.bignumber.equal(a.mod(b));
       });
 
       it('when the dividend is a multiple of the divisor', async function () {
         const a = new BN('17034'); // 17034 == 5678 * 3
         const b = new BN('5678');
 
-        (await this.safeMath.mod(a, b)).should.be.bignumber.equal(a.mod(b));
+        expect(await this.safeMath.mod(a, b)).to.be.bignumber.equal(a.mod(b));
       });
     });
 
@@ -138,7 +140,7 @@ contract('SafeMath', function () {
       const a = new BN('5678');
       const b = new BN('0');
 
-      await shouldFail.reverting(this.safeMath.mod(a, b));
+      await expectRevert(this.safeMath.mod(a, b), 'SafeMath: modulo by zero');
     });
   });
 });
